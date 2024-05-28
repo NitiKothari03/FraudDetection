@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3 fixed-top
+scrolling">
+  <div class="container-fluid">
+       <a class="navbar-brand p-2 row" href="/">
+           {% load static %}
+      <img src='{% static 'fds.png' %}' alt="" width="50" height="35">
+       </a>
+    <a class="navbar-brand p-2 row" href="/">
+        <h4>Fraud Detection System</h4>
+    </a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item mr-3">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'uploadDocument' %}">Try
+                  Now</a>
+            </li>
+          </ul>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logoutAccount' %}" class="btn
+          btn-outline-light"  style="margin-right: 20px">LogOut
+              ({{user.username}})</a>
+        {% else %}
+        <a href="{% url 'loginAccount' %}" class="btn
+          btn-outline-light" style="margin-right: 20px">LogIn</a>
+        <a href="{% url 'signupAccount' %}" class="btn
+          btn-outline-light" style="margin-right: 20px">Sign Up</a>
+        {% endif %}
+      </div>
+</nav>
+
+<style>
+  .navbar-nav li.nav-item a.nav-link:hover {
+    background-color: #7c7c7c;
+    border-radius: 5px;
+  }
+</style>
